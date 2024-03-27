@@ -3,13 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/all.css" />
-    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
     <title>Document</title>
   </head>
   <body>
     <h1>Home Page</h1>
-    <script src="/js/all.js"></script>
-    <script src="/js/bootstrap.bundle.js"></script>
+
+    <script src="js/all.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
   </body>
 </html>
+
+<!-- NOTES:
+but it's not ? when I write /student, I have to write href as "css/all.css" then only css will take effect, and when i don't write /student, I have to write href as "/css/all.css". 
+
+
+
+When you specify a base URL using app.use('/student', ...), it prefixes all routes and static file paths with "/student". Therefore, when you reference static files in your HTML, you need to consider this base URL prefix.
+
+Consider the following scenarios:
+
+With Base URL Set (/student):
+
+When you have /student as the base URL, static files are served with this prefix. So, the CSS file located at "public/css/all.css" would be served at "http://localhost:3000/student/css/all.css".
+In your HTML, when referencing this CSS file, you should omit the leading slash (/) in the href attribute, like this: <link rel="stylesheet" href="css/all.css" />. This is because the browser will automatically prepend the base URL "/student" to the relative path "css/all.css", resulting in the correct URL "http://localhost:3000/student/css/all.css".
+Without Base URL:
+
+If you don't set a base URL, static files are served from the root directory of your server. The same CSS file "public/css/all.css" would be served at "http://localhost:3000/css/all.css".
+In this case, when referencing the CSS file in your HTML, you should include the leading slash (/) in the href attribute to indicate an absolute path, like this: <link rel="stylesheet" href="/css/all.css" />. This ensures that the browser requests the CSS file from the root directory of the server.
+In summary:
+
+With a base URL set (/student), you reference static files in your HTML without the leading slash (/) in the href attribute.
+Without a base URL, you reference static files in your HTML with the leading slash (/) in the href attribute to indicate an absolute path.
+This difference arises due to how Express handles routing and serves static files based on the specified base URL.
+
+-->
