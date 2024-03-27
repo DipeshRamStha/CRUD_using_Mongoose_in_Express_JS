@@ -11,3 +11,5 @@ const connectDB = async (DATABASE_URL) => {
     console.log(error);
   }
 };
+
+export default connectDB;
