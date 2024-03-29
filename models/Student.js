@@ -10,3 +10,8 @@ const studentSchema = new mongoose.Schema({
     validate: (value) => value >= 5000.5,
   },
 });
+
+// Model
+const StudentModel = mongoose.model("student", studentSchema);
+
+export default StudentModel;
