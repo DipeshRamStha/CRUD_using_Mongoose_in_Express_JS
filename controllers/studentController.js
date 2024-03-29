@@ -36,7 +36,7 @@ class StudentController {
     // console.log(req.params.id);
     try {
       const result = await StudentModel.findById(req.params.id);
-      console.log(result);
+      // console.log(result);
       res.render("edit", { data: result });
     } catch (error) {
       console.log(error);
