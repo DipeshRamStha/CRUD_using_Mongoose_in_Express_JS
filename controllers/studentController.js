@@ -44,13 +44,30 @@ class StudentController {
   };
 
   // Update Document
-  static updateDocById = (req, res) => {
+  static updateDocById = async (req, res) => {
+    // console.log(req.params.id);
+    // console.log(req.body);
+    try {
+      const result = await StudentModel.findByIdAndUpdate(
+        req.params.id,
+        req.body
+      );
+      // console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
     res.redirect("/student");
   };
 
   // Delete Document
-  static deleteDocById = (req, res) => {
-    res.redirect("/student");
+  static deleteDocById = async (req, res) => {
+    // console.log(req.params.id);
+    try {
+      const result = await StudentModel.findByIdAndDelete(req.params.id);
+      res.redirect("/student");
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
