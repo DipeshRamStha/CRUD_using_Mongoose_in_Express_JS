@@ -1,5 +1,6 @@
 import StudentModel from "../models/Student.js";
 class StudentController {
+  // Create Document
   static createDoc = async (req, res) => {
     // console.log(req.body.name);
     try {
@@ -17,6 +18,8 @@ class StudentController {
       console.log(error);
     }
   };
+
+  // Show all document
   static getAllDoc = async (req, res) => {
     try {
       const result = await StudentModel.find();
@@ -27,14 +30,19 @@ class StudentController {
     }
     res.render("index");
   };
-  static editDoc = (req, res) => {
+
+  // Show Edit Form with Data
+  static editDoc = async (req, res) => {
+    console.log(req.params.id);
     res.render("edit");
   };
 
+  // Update Document
   static updateDocById = (req, res) => {
     res.redirect("/student");
   };
 
+  // Delete Document
   static deleteDocById = (req, res) => {
     res.redirect("/student");
   };

@@ -41,7 +41,11 @@
             <td><%= item.age%></td>
             <td><%= item.fees%></td>
             <td>
-              <i class="fas fa-pen-square text-info"></i>
+              <form action="/student/edit/<%= item._id%>" method="GET">
+                <button type="submit" class="btn">
+                  <i class="fas fa-pen-square text-info"></i>
+                </button>
+              </form>
               <i class="fas fa-trash text-danger"></i>
             </td>
           </tr>
