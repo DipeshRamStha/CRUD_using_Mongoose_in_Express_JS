@@ -28,7 +28,6 @@ class StudentController {
     } catch (error) {
       console.log(error);
     }
-    res.render("index");
   };
 
   // Show Edit Form with Data
