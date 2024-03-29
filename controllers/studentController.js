@@ -33,8 +33,14 @@ class StudentController {
 
   // Show Edit Form with Data
   static editDoc = async (req, res) => {
-    console.log(req.params.id);
-    res.render("edit");
+    // console.log(req.params.id);
+    try {
+      const result = await StudentModel.findById(req.params.id);
+      console.log(result);
+      res.render("edit", { data: result });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Update Document
